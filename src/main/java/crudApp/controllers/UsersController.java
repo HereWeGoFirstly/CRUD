@@ -2,7 +2,6 @@ package crudApp.controllers;
 
 import crudApp.model.User;
 import crudApp.service.UserService;
-import crudApp.service.UserServiceTESTImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,24 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UsersController {
 
-//    AnnotationConfigApplicationContext context =
-//            new AnnotationConfigApplicationContext(AppConfiguration.class);
-//
-//    UserService userService = context.getBean(UserService.class);
-
-//    private final UserService userService;
-//
-//    @Autowired
-//    public UsersController(UserService userService) {
-//        this.userService = userService;
-//    }
-
-    private final UserServiceTESTImpl userService;
-
     @Autowired
-    public UsersController(UserServiceTESTImpl userService) {
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
+
+    private final UserService userService;
+
 
     @GetMapping()
     public String list(Model model) {

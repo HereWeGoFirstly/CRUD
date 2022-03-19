@@ -1,7 +1,9 @@
 package crudApp;
 
 import crudApp.config.AppConfiguration;
+import crudApp.dao.UserDaoImpl;
 import crudApp.model.User;
+import crudApp.service.UserServiceImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import crudApp.service.UserService;
 
@@ -10,7 +12,8 @@ public class MainApp {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfiguration.class);
 
-        UserService userService = context.getBean(UserService.class);
+        UserServiceImpl userService = context.getBean(UserServiceImpl.class);
+
 
         userService.add(new User("User1", "Lastname1"));
         userService.add(new User("User2", "Lastname2"));

@@ -6,18 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
-    private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
+//    @Autowired
+//    private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
     public void add(User user) {
-        entityManagerFactoryBean.createNativeEntityManager(null).persist(user);
+        entityManager.persist(user);
 //        sessionFactory.getCurrentSession().save(user);
     }
 
