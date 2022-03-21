@@ -12,13 +12,13 @@ public class MainApp {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfiguration.class);
 
-        UserServiceImpl userService = context.getBean(UserServiceImpl.class);
+        UserService userService = context.getBean(UserService.class);
 
 
-        userService.add(new User("User1", "Lastname1"));
-        userService.add(new User("User2", "Lastname2"));
-        userService.add(new User("User3", "Lastname3"));
-        userService.add(new User("User4", "Lastname4"));
-//        System.out.println(userService.getUserById(3));
+//        userService.add(new User("User1", "Lastname1"));
+//        userService.add(new User("User2", "Lastname2"));
+//        userService.add(new User("User3", "Lastname3"));
+//        userService.add(new User("User4", "Lastname4"));
+        System.out.println(userService.getUserById(3));
     }
 }

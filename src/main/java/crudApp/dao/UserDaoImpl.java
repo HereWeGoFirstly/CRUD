@@ -13,24 +13,23 @@ import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
+    private SessionFactory sessionFactory;
 
-//    @Autowired
-//    private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
-    @PersistenceContext
-    EntityManager entityManager;
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public void add(User user) {
-        entityManager.persist(user);
-//        sessionFactory.getCurrentSession().save(user);
+        sessionFactory.getCurrentSession().persist(user);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
-//        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
-//        return query.getResultList();
-        return null;
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        return query.getResultList();
     }
 
     @Override
@@ -40,15 +39,13 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(int id, User user) {
-
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public User getUserById(int id) {
-//        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where id=:id");
-//        query.setParameter("id", id);
-//        return query.getSingleResult();
-        return null;
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where id=:id");
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 }
