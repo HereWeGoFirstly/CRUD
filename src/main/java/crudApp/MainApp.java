@@ -19,6 +19,6 @@ public class MainApp {
         userService.add(new User("User2", "Lastname2"));
         userService.add(new User("User3", "Lastname3"));
         userService.add(new User("User4", "Lastname4"));
-//        System.out.println(userService.getUserById(3));
+        System.out.println(userService.getUserById(3));
     }
 }
